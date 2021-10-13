@@ -14,23 +14,18 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  deploy_Deeznuts()
-  // Promise.all([deploy_Greeter(), deploy_Deeznuts()])
-  // .catch((error) => {
-  //   console.error(error);
-  //   process.exitCode = 1;
-  // });
-
+  return deploy_Greeter()
+  // return deploy_Deeznuts()
 }
 
 async function deploy_Deeznuts() {
-  const [owner, addr1] = await ethers.getSigners();
+  const [owner, charity, marketing] = await ethers.getSigners();
 
   const DEEZNUTS = await hre.ethers.getContractFactory("DEEZNUTS");
-  const deeznuts = await DEEZNUTS.deploy(owner.address, addr1.address);
-  console.log("DEEZNUTS deployment arguments: \n1. %s \n2. %s \n", owner.address, addr1.address);
+  const deeznuts = await DEEZNUTS.deploy(charity.address, marketing.address);
+  console.log("DEEZNUTS deployment \nCharity wallet: %s \nMarketing wallet: %s \n", charity.address, marketing.address);
   // await deeznuts.deployed();
-  console.log("DEEZNUTS deployed to:", deeznuts.address);
+  console.log("DEEZNUTS deployed to: ", deeznuts.address);
   return deeznuts
 }
 

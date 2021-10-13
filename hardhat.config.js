@@ -23,18 +23,20 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.5",
-  defaultNetwork: "hardhat",
   networks: {
     hardhat: {
       allowUnlimitedContractSize: true,
-      forking: {
-        url: process.env.RINKEBY_URL || ""
-      },
     },
     rinkeby: {
       allowUnlimitedContractSize: true,
-      url: "http://127.0.0.1:8545/"
-    }
+      url: process.env.RINKEBY_URL,
+      accounts: [
+        process.env.PRIVATE_KEY,
+        process.env.PRIVATE_KEY_CHARITY,
+        process.env.PRIVATE_KEY_MARKETING,
+      ]
+    },
+    
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
