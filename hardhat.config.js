@@ -28,9 +28,9 @@ module.exports = {
     hardhat: {
       allowUnlimitedContractSize: true,
       forking: {
-        url: "http://127.0.0.1:8545/" || "",
+        url: process.env.RINKEBY_URL || ""
       },
-    }
+    },
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
