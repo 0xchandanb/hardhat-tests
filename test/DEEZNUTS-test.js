@@ -41,4 +41,16 @@ describe("DEEZNUTS", function () {
   //   const DEEZNUTS = await ethers.getContractFactory("DEEZNUTS");
   //   const deeznuts = await DEEZNUTS.deploy(owner.address, addr1.address);
   // });
+  it("Check that the fees are sent to appropriate wallets correctly", async function () {
+
+    const [owner, dummy, charity, marketing] = await ethers.getSigners();
+    const DEEZNUTS = await ethers.getContractFactory("DEEZNUTS");
+    const deeznuts = await DEEZNUTS.deploy(charity.address, marketing.address);
+
+    const amount = BigNumber.from(100).mul(toWei);
+    await deeznuts.transfer(dummy.address, amount);
+
+    console.log("charity: %s, marketing: %s", await deeznuts.balanceOf(charity.address), await deeznuts.balanceOf(marketing.address));
+
+  });
 });

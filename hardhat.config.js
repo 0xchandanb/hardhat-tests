@@ -31,6 +31,9 @@ module.exports = {
         url: process.env.RINKEBY_URL || ""
       },
     },
+    rinkeby: {
+        url: "http://127.0.0.1:8545/"
+    }
   },
   gasReporter: {
     enabled: process.env.REPORT_GAS !== undefined,
