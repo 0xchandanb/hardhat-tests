@@ -32,7 +32,8 @@ module.exports = {
       },
     },
     rinkeby: {
-        url: "http://127.0.0.1:8545/"
+      allowUnlimitedContractSize: true,
+      url: "http://127.0.0.1:8545/"
     }
   },
   gasReporter: {
