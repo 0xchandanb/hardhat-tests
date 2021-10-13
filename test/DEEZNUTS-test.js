@@ -4,13 +4,14 @@ const BigNumber = ethers.BigNumber
 
 describe("DEEZNUTS", function () {
 
+  const toWei = BigNumber.from(`1${"0".repeat(18)}`);
+
   it("Total supply equal to what you set", async function () {
     const [owner, addr1] = await ethers.getSigners();
     const DEEZNUTS = await ethers.getContractFactory("DEEZNUTS");
     const deeznuts = await DEEZNUTS.deploy(owner.address, addr1.address);
 
-    const zeros = "0".repeat(9 + 18);
-    expect(await deeznuts.totalSupply()).to.equal(BigNumber.from(`1${zeros}`)); 
+    expect(await deeznuts.totalSupply()).to.equal(BigNumber.from(10).pow(9).mul(toWei));
   });
   
   it("Transfer to wallets that are excluded and not excluded from fee", async function () {
@@ -19,7 +20,6 @@ describe("DEEZNUTS", function () {
     const DEEZNUTS = await ethers.getContractFactory("DEEZNUTS");
     const deeznuts = await DEEZNUTS.deploy(owner.address, addr1.address);
 
-    const toWei = BigNumber.from(`1${"0".repeat(18)}`);
     const amount = BigNumber.from(100).mul(toWei);
     const requiredBalance = (await deeznuts.balanceOf(owner.address)).sub(amount)
     
