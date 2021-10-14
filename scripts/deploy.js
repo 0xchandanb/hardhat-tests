@@ -14,8 +14,8 @@ async function main() {
   // manually to make sure everything is compiled
   // await hre.run('compile');
 
-  return deploy_Greeter()
-  // return deploy_Deeznuts()
+  // return deploy_Greeter()
+  return deploy_Deeznuts()
 }
 
 async function deploy_Deeznuts() {

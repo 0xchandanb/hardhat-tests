@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "dotenv": "^10.0.0"
+  },
+  "scripts": {
+    "dev": "node start-node.js"
   }
 }

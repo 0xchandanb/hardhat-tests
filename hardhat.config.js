@@ -31,7 +31,7 @@ module.exports = {
       allowUnlimitedContractSize: true,
       url: process.env.RINKEBY_URL,
       accounts: [
-        process.env.PRIVATE_KEY,
+        process.env.PRIVATE_KEY_OWNER,
         process.env.PRIVATE_KEY_CHARITY,
         process.env.PRIVATE_KEY_MARKETING,
       ]
