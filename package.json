@@ -13,6 +13,7 @@
     "dotenv": "^10.0.0"
   },
   "scripts": {
-    "dev": "node start-node.js"
+    "dev": "node start-node.js",
+    "deploy": "yarn hardhat run scripts/deploy.js --network rinkeby"
   }
 }

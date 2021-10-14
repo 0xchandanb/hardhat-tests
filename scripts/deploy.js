@@ -1,18 +1,7 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// When running the script with `npx hardhat run <script>` you'll find the Hardhat
-// Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
 const {ethers} = require("hardhat");
 
 async function main() {
-  // Hardhat always runs the compile task when running scripts with its command
-  // line interface.
-  //
-  // If this script is run directly using `node` you may want to call compile
-  // manually to make sure everything is compiled
-  // await hre.run('compile');
 
   // return deploy_Greeter()
   return deploy_Deeznuts()
@@ -23,9 +12,7 @@ async function deploy_Deeznuts() {
 
   const DEEZNUTS = await hre.ethers.getContractFactory("DEEZNUTS");
   const deeznuts = await DEEZNUTS.deploy(charity.address, marketing.address);
-  console.log("DEEZNUTS deployment \nCharity wallet: %s \nMarketing wallet: %s \n", charity.address, marketing.address);
-  // await deeznuts.deployed();
-  console.log("DEEZNUTS deployed to: ", deeznuts.address);
+  console.log("DEEZNUTS deployed at: %s \nOwner: %s \nCharity: %s \nMarketing: %s \n", deeznuts.address, owner.address, charity.address, marketing.address);
   return deeznuts
 }
 
